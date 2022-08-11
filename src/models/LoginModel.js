@@ -17,15 +17,24 @@ class Login {
   }
 
   async register() {
-    this.valida();
+    this.valida(); //checa os dados
     if (this.errors.length > 0) return;
+
+    await this.userExists(); //checa se o e-mail já foi cadastrado anteriormente
+    if (this.errors.length > 0) return;
+
+    const salt = bcryptjs.genSaltSync(); //criando o salt
+    this.body.password = bcryptjs.hashSync(this.body.password, salt); //fazendo o hash da senha, baseado no valor da senha e no salt gerado
     try {
-      const salt = bcryptjs.genSaltSync(); //criando o salt
-      this.body.password = bcryptjs.hashSync(this.body.password, salt); //fazendo o hash da senha, baseado no valor da senha e no salt gerado
       this.user = await LoginModel.create(this.body);
     } catch (e) {
       console.error(e);
     }
+  }
+
+  async userExists() {
+    const user = await LoginModel.findOne({ email: this.body.email });
+    if (user) this.errors.push("E-mail already taken.");
   }
 
   valida() {
