@@ -28,7 +28,11 @@ const {
   csrfMiddleware,
 } = require("./src/middlewares/middleware"); //middlewares são funções que são executadas na rota
 
-app.use(helmet()); //usando o helmet
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+); //usando o helmet
 app.use(express.urlencoded({ extended: true })); //para postar formulário para dentro do app
 app.use(express.json()); //para usar o json
 app.use(express.static(path.resolve(__dirname, "public"))); //arquivos estáticos que devem ser acessados diretamente (ex: imagens, css, js)
