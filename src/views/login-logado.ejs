@@ -18,21 +18,12 @@
       <div class="row">
         <div class="col-lg-2"></div>
         <div class="col-lg-8 my-3">
-          <h1 class="text-center">Contactum</h1>
-          <p class="text-center lead">Save and consult your contacts</p>
-        </div>
+          <h1 class="text-center">Hello, <%= user.email %> !</h1>
+          <p class="text-center lead">
+            You must to log out to create another account
+          </p>
 
-        <%- include('includes/messages') %>
-
-        <div class="responsive-table">
-          <table class="table my-3">
-            <tr>
-              <td>name</td>
-              <td>surname</td>
-              <td>phone</td>
-              <td>e-mail</td>
-            </tr>
-          </table>
+          <%- include('includes/messages') %>
         </div>
 
         <div class="col-lg-2"></div>
