@@ -20,7 +20,7 @@ const MongoStore = require("connect-mongo"); //p/ salvar a session no banco de d
 const flash = require("connect-flash"); //mensagens autodestrutivas (assim que lida, some da base de dados), sendo usadas para enviar feedback para o usuário (por ex. erro). essas mensagens são salvas na sessão.
 const routes = require("./routes"); //rotas da aplicação (home, contato)
 const path = require("path"); //caminhos absolutos
-const helmet = require("helmet"); //segurança: recomendação do express
+//const helmet = require("helmet"); //segurança: recomendação do express
 const csrf = require("csurf"); //segurança: csrftokens para os formulários, que fazem com que nenhum app externo consiga postar coisas para dentro da nossa aplicação
 const {
   middlewareGlobal,
@@ -28,11 +28,11 @@ const {
   csrfMiddleware,
 } = require("./src/middlewares/middleware"); //middlewares são funções que são executadas na rota
 
-app.use(
+/* app.use(
   helmet({
     contentSecurityPolicy: false,
   })
-); //usando o helmet
+);  */ //usando o helmet
 app.use(express.urlencoded({ extended: true })); //para postar formulário para dentro do app
 app.use(express.json()); //para usar o json
 app.use(express.static(path.resolve(__dirname, "public"))); //arquivos estáticos que devem ser acessados diretamente (ex: imagens, css, js)
