@@ -67,7 +67,7 @@ class Login {
       );
   }
 
-  //para limpar o objeto
+  //para limpar o objeto - garante que é as chaves do obj são uma string
   cleanUp() {
     for (const key in this.body) {
       if (typeof this.body[key] !== "string") {
