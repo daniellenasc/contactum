@@ -22,21 +22,51 @@
           <p class="text-center lead">Save and consult your contacts</p>
         </div>
 
-        <%- include('includes/messages') %>
+        <%- include('includes/messages') %> <% if(contatos.length > 0) { %>
 
         <div class="responsive-table">
           <table class="table my-3">
+          <!--   <% contatos.forEach(contato => { %>
+
             <tr>
-              <td>name</td>
-              <td>surname</td>
-              <td>phone</td>
-              <td>e-mail</td>
+              <td><%= contato.nome %></td>
+              <td><%= contato.sobrenome %></td>
+              <td><%= contato.telefone %></td>
+              <td><%= contato.email %></td>
+              <td><a href="/contato/index/<%= contato._id %>">Edit</a></td>
+              <td>
+                <a class="text-danger" href="/contato/delete/<%= contato._id %>"
+                  >Delete</a
+                >
+              </td>
             </tr>
+            <% }) %>
           </table>
         </div>
+        <% } else { %>
+        <p class="text-center lead">Não existem contatos na sua agenda.</p>
+        <% } %> -->
 
-        <div class="col-lg-2"></div>
+        <% if (user) { %>
+          <% if (contatos.length > 0) {%>
+          <% contatos.forEach(contato => { %>
+            <tr>
+              <td><%= contato.nome %></td>
+              <td><%= contato.sobrenome %></td>
+              <td><%= contato.email %></td>
+              <td><%= contato.telefone %></td>
+              <td><a href="/contato/index/<%= contato._id %>">Editar</a></td>
+              <td><a class="text-danger" href="/contato/delete/<%= contato._id %>">Excluir</a></td>
+            </tr>
+          <% }); %>
+          <% } else { %>
+            <p class="text-center lead">Não existem contatos cadastrados</p>
+          <% } %>
+          <% } else { %>
+            <p class="text-center lead">Você precisa fazer login para ver os contatos</p>
+          <% } %>
       </div>
+      <div class="col-lg-2"></div>
     </div>
 
     <script
