@@ -18,7 +18,7 @@
       <div class="row">
         <div class="col-lg-2"></div>
         <div class="col-lg-8 my-3">
-          <h1 class="text-center">Contactum</h1>
+          <h1 class="text-center"><em>Contactum</em></h1>
           <p class="text-center lead">Save and consult your contacts</p>
         </div>
 
@@ -26,7 +26,7 @@
 
         <div class="responsive-table">
           <table class="table my-3">
-          <!--   <% contatos.forEach(contato => { %>
+       <% contatos.forEach(contato => { %>
 
             <tr>
               <td><%= contato.nome %></td>
@@ -44,30 +44,13 @@
           </table>
         </div>
         <% } else { %>
-        <p class="text-center lead">Não existem contatos na sua agenda.</p>
-        <% } %> -->
+   
+          <a class="text-center" href="/login/index"> <button type="button" class="btn btn-dark btn-lg">Login</button></a>
+    
+        <% } %> 
 
-        <% if (user) { %>
-          <% if (contatos.length > 0) {%>
-          <% contatos.forEach(contato => { %>
-            <tr>
-              <td><%= contato.nome %></td>
-              <td><%= contato.sobrenome %></td>
-              <td><%= contato.email %></td>
-              <td><%= contato.telefone %></td>
-              <td><a href="/contato/index/<%= contato._id %>">Editar</a></td>
-              <td><a class="text-danger" href="/contato/delete/<%= contato._id %>">Excluir</a></td>
-            </tr>
-          <% }); %>
-          <% } else { %>
-            <p class="text-center lead">Não existem contatos cadastrados</p>
-          <% } %>
-          <% } else { %>
-            <p class="text-center lead">Você precisa fazer login para ver os contatos</p>
-          <% } %>
-      </div>
-      <div class="col-lg-2"></div>
-    </div>
+       
+
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
