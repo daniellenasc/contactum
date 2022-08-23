@@ -76,7 +76,7 @@ Contato.buscaContatos = async function (user) {
   try {
     //console.log(user);
     const contatos = await ContatoModel.find({ criadoPor: user }).sort({
-      criadoEm: -1,
+      nome: 1,
     });
     return contatos;
   } catch (e) {
